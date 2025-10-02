@@ -22,7 +22,7 @@ class MyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return ListView.separated(
       itemCount: items.length,
       itemBuilder: (context, index) {
         return Padding(
@@ -30,6 +30,7 @@ class MyList extends StatelessWidget {
           child: Text(items[index]),
         );
       },
+      separatorBuilder: (context, index) => Divider(),
     );
   }
 }
