@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Простейший список')),
+        appBar: AppBar(title: Text('Прокручиваемый список')),
         body: MyList(),
       ),
     );
@@ -18,14 +18,17 @@ class MyApp extends StatelessWidget {
 }
 
 class MyList extends StatelessWidget {
-  final List<String> items = List.generate(10, (index) => 'Элемент ${index + 1}');
+  final List<String> items = List.generate(50, (index) => 'Элемент ${index + 1}');
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: items.map((item) => Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Text(item),
-      )).toList(),
+    return SingleChildScrollView(
+      child: Column(
+        children: items.map((item) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(item),
+        )).toList(),
+      ),
     );
   }
 }
