@@ -11,7 +11,7 @@ class _SeparatedScreenState extends State<SeparatedScreen> {
 
   void _addBook() {
     setState(() {
-      books.add('Book $nextBookId');
+      books.add('Книга $nextBookId');
       nextBookId++;
     });
   }

@@ -11,7 +11,7 @@ class _ColumnScreenState extends State<ColumnScreen> {
 
   void _addBook() {
     setState(() {
-      books.add('Book $nextBookId');
+      books.add('Книга $nextBookId');
       nextBookId++;
     });
   }

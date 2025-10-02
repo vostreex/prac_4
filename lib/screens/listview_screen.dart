@@ -11,7 +11,7 @@ class _ListViewScreenState extends State<ListViewScreen> {
 
   void _addBook() {
     setState(() {
-      books.add('Book $nextBookId');
+      books.add('Книга $nextBookId');
       nextBookId++;
     });
   }
