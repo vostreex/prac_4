@@ -4,33 +4,41 @@ void main() {
   runApp(MyApp());
 }
 
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Прокручиваемый список')),
-        body: MyList(),
-      ),
+      home: MyHomePage(),
     );
   }
 }
 
-class MyList extends StatelessWidget {
-  final List<String> items = List.generate(50, (index) => 'Элемент ${index + 1}');
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final List<String> items = List.generate(100, (index) => 'Item ${index + 1}');
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(items[index]),
-        );
-      },
-      separatorBuilder: (context, index) => Divider(),
+    return Scaffold(
+      body: ListView(
+        children: items.map((item) => GestureDetector(
+          onTap: () {
+            setState(() {
+              items.remove(item);
+            });
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(item),
+          ),
+        )).toList(),
+      ),
     );
   }
 }
