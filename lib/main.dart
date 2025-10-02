@@ -26,16 +26,20 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Список с ключами')),
       body: ListView(
         children: items.map((item) => GestureDetector(
+          key: ValueKey(item),
           onTap: () {
             setState(() {
-              items.remove(item);
+              items.remove(item); // Удаление элемента при нажатии
             });
           },
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text(item),
+            child: Text(
+              item,
+            ),
           ),
         )).toList(),
       ),
