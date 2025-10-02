@@ -22,13 +22,14 @@ class MyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: items.map((item) => Padding(
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index) {
+        return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(item),
-        )).toList(),
-      ),
+          child: Text(items[index]),
+        );
+      },
     );
   }
 }
